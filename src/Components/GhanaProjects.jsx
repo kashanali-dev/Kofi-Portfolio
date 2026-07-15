@@ -10,7 +10,7 @@ const projects = [
     badge: "FLAGSHIP DEVELOPMENT",
     title: "Asitina Pa Agricultural Venture",
     description:
-      "Building corporate-managed agricultural communities in Ghana that combine sustainable farming, green infrastructure, housing, education and economic opportunity into one integrated ecosystem.",
+      "Asitina Pa is building corporate-managed agricultural towns in Ghana that integrate sustainable farming, green infrastructure, housing, and community services, using a model designed for nationwide replication. The first community will offer farmers and their families modern housing, education, healthcare, clean water, and new economic opportunities, with the aim of becoming a major domestic food producer, reducing Ghana's food imports and creating surplus for export.",
 
     highlights: [
       "Phase 1 investment exceeding $1 million",
@@ -29,7 +29,7 @@ const projects = [
     badge: "GREEN INFRASTRUCTURE",
     title: "City Forest Ghana",
     description:
-      "An urban forestry initiative delivering sustainable green infrastructure, tree planting, environmental restoration and long-term ecological planning across Ghana.",
+      "Asitina Pa's green infrastructure subsidiary, City Forest Ghana, is designed as a professional urban forestry company that plans, plants, and maintains green spaces for governments, developers, and institutions across Ghana, modelled in part on UK urban forestry practice. It also owns and operates a horticultural and urban forestry nursery intended to be among the largest in West Africa, supplying Asitina Pa's own developments first and, over time, clients across the region.",
 
     highlights: [
       "Urban & horticultural forestry services",
@@ -136,7 +136,7 @@ export default function GhanaProjects() {
 
               {/* Highlights */}
 
-              <div className="mt-8 space-y-4">
+              <div className="mt-4 space-y-4">
                 {projects[0].highlights.map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div
@@ -222,7 +222,7 @@ export default function GhanaProjects() {
 
               {/* Highlights */}
 
-              <div className="mt-8 space-y-4">
+              <div className="mt-4 space-y-4">
                 {projects[1].highlights.map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div

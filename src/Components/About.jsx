@@ -161,7 +161,7 @@ export default function About() {
             viewport={{ once: true }}
           >
             <div
-              className="inline-flex items-center justify-center px-8 py-3 rounded-full
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full
                 bg-[#F8F6F1]
                 border border-[#EAB308]
                 shadow-[0_4px_10px_rgba(234,179,8,0.12)]"
@@ -170,7 +170,7 @@ export default function About() {
                 About Me
               </span>
             </div>
-            <h2 className="text-[28px] font-black leading-tight sm:text-[32px] md:text-[35px] lg:text-[34px]">
+            <h2 className="text-[28px] mt-3 font-black leading-tight sm:text-[32px] md:text-[35px] lg:text-[34px]">
               Building Research That Creates
               <span className="block" style={{ color: ACCENT }}>
                 A More Inclusive Digital World
