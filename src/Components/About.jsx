@@ -177,7 +177,7 @@ export default function About() {
               </span>
             </h2>
 
-            <p className="mt-3 text-[15px] leading-tight text-[#717173]">
+            <p className="mt-3 text-[15px] leading-6 text-[#717173]">
               Researcher, Founder, Author, and Support Worker with a strong
               passion for digital wellbeing, inclusive innovation, and ethical
               technology. Focused on promoting neurodiversity, conducting

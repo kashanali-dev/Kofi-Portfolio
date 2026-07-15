@@ -24,7 +24,7 @@ const researches = [
 
   {
     id: 3,
-    tag: "RESEARCH PAPER",
+    tag: "RESEARCH Social Media",
     title: "Social Media & Late Autism / ADHD Self-Identification",
     description:
       "Examining the role of social media in late autism and ADHD self-identification among adults in the UK.",

@@ -19,11 +19,11 @@ import { MdEmail } from "react-icons/md";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Research", href: "/research" },
-  { label: "Projects", href: "/projects" },
-  { label: "Books", href: "/books" },
-  { label: "Contact", href: "/contact" },
+  { label: "About", href: "#about" },
+  { label: "Research", href: "#research" },
+  { label: "Projects", href: "#projects" },
+  { label: "Books", href: "#books" },
+  { label: "Contact", href: "#contact" },
 ];
 
 function OrcidIcon({ className = "h-4 w-4" }) {
@@ -68,7 +68,7 @@ const SOCIALS = [
 export default function Footer() {
   return (
     <footer className="bg-[#1A1A2E]">
-      <div className="mx-auto max-w-7xl px-6 py-10">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-10">
         {/* Top row: identity, nav, socials */}
         <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
           {/* Identity */}

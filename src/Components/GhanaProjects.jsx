@@ -154,7 +154,7 @@ export default function GhanaProjects() {
               {/* Button */}
 
               <button
-                className="mt-10 inline-flex items-center gap-3 rounded-xl px-6 py-3 font-semibold text-white transition-all duration-300 hover:scale-105"
+                className="mt-10 cursor-pointer inline-flex items-center gap-3 rounded-xl px-6 py-3 font-semibold text-white transition-all duration-300 hover:scale-105"
                 style={{ backgroundColor: ACCENT }}
               >
                 {projects[0].button}
@@ -240,7 +240,7 @@ export default function GhanaProjects() {
               {/* Button */}
 
               <button
-                className="mt-10 inline-flex items-center gap-3 rounded-xl px-6 py-3 font-semibold text-white transition-all duration-300 hover:scale-105"
+                className="mt-10 cursor-pointer inline-flex items-center gap-3 rounded-xl px-6 py-3 font-semibold text-white transition-all duration-300 hover:scale-105"
                 style={{ backgroundColor: ACCENT }}
               >
                 {projects[1].button}
