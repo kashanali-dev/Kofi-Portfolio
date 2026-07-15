@@ -1,4 +1,5 @@
 import About from "./Components/About";
+import AffiliationsSection from "./Components/AffiliationsSection";
 import Books from "./Components/Books";
 import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
@@ -13,6 +14,7 @@ function App() {
       <Header />
       <HeroSection />
       <About />
+      <AffiliationsSection />
       <Research />
       <GhanaProjects />
       <Books />

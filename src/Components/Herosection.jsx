@@ -63,7 +63,7 @@ export default function HeroSection() {
             <div className="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-lg bg-amber-400 px-5 py-3 text-sm font-bold text-neutral-900 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:bg-amber-300"
+                className="inline-flex items-center gap-2 rounded-lg bg-[#e4a136] px-5 py-3 text-sm font-bold text-neutral-900 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:bg-[#dd9725]"
               >
                 Get in touch
                 <ArrowRight className="h-4 w-4" />
@@ -96,23 +96,6 @@ export default function HeroSection() {
                 alt="Kofi Ofori-Mensah"
                 className="h-full w-full object-cover"
               />
-            </div>
-
-            {/* Award Badge */}
-            <div className="absolute -right-3 -top-3 flex h-20 w-20 sm:h-24 sm:w-24 rotate-6 flex-col items-center justify-center rounded-full border-4 border-white bg-amber-400 text-center shadow-lg">
-              <span className="text-[0.55rem] sm:text-[0.6rem] font-bold uppercase leading-tight text-neutral-900">
-                Winner
-              </span>
-
-              <span className="mt-0.5 text-[0.55rem] sm:text-[0.62rem] font-extrabold uppercase leading-tight text-neutral-900">
-                Roehampton
-                <br />
-                Futures Award
-              </span>
-
-              <span className="text-[0.55rem] sm:text-[0.6rem] font-bold text-neutral-900">
-                2026
-              </span>
             </div>
           </div>
         </div>

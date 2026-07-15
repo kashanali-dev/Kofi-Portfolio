@@ -112,7 +112,7 @@ function NewsletterForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="whitespace-nowrap cursor-pointer rounded-lg bg-[oklch(87.9%_0.169_91.605)] px-5 py-2.5 text-sm font-semibold text-[#111827] transition hover:bg-[oklch(79%_0.17_85)] disabled:cursor-not-allowed disabled:opacity-60"
+          className="whitespace-nowrap transition-all duration-300 hover:-translate-y-1 hover:bg-[#C68A2B] cursor-pointer rounded-lg bg-[#C68A2B] px-5 py-2.5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isSubmitting ? "Subscribing…" : "Subscribe"}
         </button>
@@ -195,7 +195,7 @@ function SendMessageForm() {
           <select
             id="topic"
             defaultValue=""
-            className={`w-full rounded-lg border bg-white px-4 py-2.5 text-sm outline-none transition focus:ring-2 focus:ring-[oklch(87.9%_0.169_91.605)]/60 ${
+            className={`w-full rounded-lg border bg-white px-4 py-2.5 text-sm outline-none transition focus:ring-2 hover:text-gray-400 ${
               errors.topic
                 ? "border-red-400 text-[#111827]"
                 : "border-[#EAE6DA] text-gray-400"
@@ -232,7 +232,7 @@ function SendMessageForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full cursor-pointer rounded-lg bg-[oklch(87.9%_0.169_91.605)] py-3 text-sm font-bold uppercase tracking-wide text-[#111827] transition hover:bg-[oklch(79%_0.17_85)] disabled:cursor-not-allowed disabled:opacity-60"
+          className="w-full cursor-pointer rounded-lg bg-[#C68A2B] py-3 text-sm font-bold uppercase tracking-wide text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#C68A2B] disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isSubmitting ? "Sending…" : "Send Message"}
         </button>
