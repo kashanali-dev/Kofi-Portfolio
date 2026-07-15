@@ -45,7 +45,7 @@ const projects = [
 
 export default function GhanaProjects() {
   return (
-    <section id="projects" className="py-10 lg:py-12">
+    <section id="projects" className="py-8 lg:py-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         {/* Heading */}
 

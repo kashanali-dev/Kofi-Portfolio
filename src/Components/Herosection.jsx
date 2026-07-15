@@ -79,12 +79,11 @@ export default function HeroSection() {
             </div>
 
             <p className="mx-auto mt-6 max-w-155 text-sm leading-7 text-stone-500 lg:mx-0">
-              <span className="font-semibold text-stone-700">
-                Kofi Ofori-Mensah
-              </span>{" "}
-              works at the intersection of digital marketing, neurodiversity,
-              and platform ethics — researching how autistic and neurodivergent
-              adults experience social media marketing in the UK.
+              <span className="font-semibold text-stone-700">Kofi's</span> path
+              into this work is not conventional. Before returning to
+              postgraduate study, he built a career spanning microfinance and
+              credit risk in Ghana, real estate sales and marketing leadership,
+              and frontline support work with autistic adults and people in UK.
             </p>
           </div>
 

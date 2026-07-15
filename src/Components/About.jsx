@@ -132,7 +132,7 @@ export default function About() {
       id="about"
       className="bg-linear-to-b from-white via-[#fcfcfc] to-[#f7fbfb] py-10 lg:py-12"
     >
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-8">
+      <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 md:px-10">
         <div className="grid grid-cols-1 items-center gap-6 md:gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Left Image */}
 
@@ -170,7 +170,7 @@ export default function About() {
                 About Me
               </span>
             </div>
-            <h2 className="text-[28px] font-black leading-tight sm:text-[32px] md:text-[40px] lg:text-[38px]">
+            <h2 className="text-[28px] font-black leading-tight sm:text-[32px] md:text-[35px] lg:text-[34px]">
               Building Research That Creates
               <span className="block" style={{ color: ACCENT }}>
                 A More Inclusive Digital World

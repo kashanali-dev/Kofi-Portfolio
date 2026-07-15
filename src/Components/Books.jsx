@@ -38,8 +38,8 @@ const books = [
 
 export default function Books() {
   return (
-    <section id="books" className="bg-[#0F0F10] py-16 lg:py-20">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-8">
+    <section id="books" className="bg-[#0F0F10] py-8 lg:py-12">
+      <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 md:px-10">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 35 }}

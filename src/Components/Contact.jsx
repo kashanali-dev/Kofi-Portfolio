@@ -250,8 +250,8 @@ function SendMessageForm() {
 
 export default function Contact() {
   return (
-    <section id="contact" className="bg-white py-18 sm:py-20">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-20">
+    <section id="contact" className="bg-white py-8 sm:py-10">
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 sm:px-10 lg:grid-cols-2 lg:gap-20">
         {/* Left column */}
         <div>
           <h2 className="text-4xl font-extrabold text-[#111827]">

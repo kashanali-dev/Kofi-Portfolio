@@ -52,8 +52,8 @@ const researches = [
 
 export default function Research() {
   return (
-    <section id="research" className="py-12 lg:py-16">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-8">
+    <section id="research" className="py-8 lg:py-10">
+      <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 md:px-10">
         {/* Heading */}
 
         <motion.div
