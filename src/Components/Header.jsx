@@ -20,15 +20,15 @@ export default function Header() {
   const socials = [
     {
       icon: <FaLinkedinIn />,
-      link: "https://linkedin.com",
+      link: "https://www.linkedin.com/in/kofioforimensah/",
     },
     {
       icon: <SiOrcid />,
-      link: "https://orcid.org",
+      link: "https://orcid.org/0009-0009-6363-8267",
     },
     {
       icon: <FaTwitter />,
-      link: "https://twitter.com/",
+      link: "https://x.com/ofori_mensah",
     },
   ];
 

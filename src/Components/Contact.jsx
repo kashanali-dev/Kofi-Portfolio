@@ -1,16 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { CheckCircle2 } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
-/**
- * Contact Section — "Let's Talk." (Kofi Ofori-Mensah)
- * Color scheme matching:
- * --color-accent:      #C68A2B (Warm Premium Gold)
- * --color-accent-dark: #A06D1E
- * --color-panel:       #F7F5F0 (Soft Ivory Cream)
- * --color-heading:     #111827
- * --color-body:        #4B5563
- */
+// Aapke EmailJS Credentials
+const EMAILJS_SERVICE_ID = "service_w1gazqm";
+const EMAILJS_PUBLIC_KEY = "QGCRHCpc_SaJ6NCtQ";
+const CONTACT_TEMPLATE_ID = "template_8bgqwyr";
 
 const TOPICS = [
   "Speaking invitation",
@@ -69,9 +65,25 @@ function NewsletterForm() {
   } = useForm({ mode: "onBlur" });
 
   const onSubmit = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 600));
-    console.log("Subscribed:", data.email);
-    reset();
+    try {
+      // Newsletter subscription automatic email setup
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        CONTACT_TEMPLATE_ID,
+        {
+          to_email: data.email,
+          to_name: "Subscriber",
+          topic: "Newsletter Subscription",
+          message:
+            "Thank you for subscribing to our newsletter! You will receive our latest updates.",
+        },
+        EMAILJS_PUBLIC_KEY,
+      );
+      console.log("Subscribed:", data.email);
+      reset();
+    } catch (error) {
+      console.error("Newsletter sending failed:", error);
+    }
   };
 
   return (
@@ -84,7 +96,6 @@ function NewsletterForm() {
         your time.
       </p>
 
-      {/* Main Form container with fixed spacing to prevent shifting */}
       <form
         onSubmit={handleSubmit(onSubmit)}
         noValidate
@@ -135,9 +146,27 @@ function SendMessageForm() {
   } = useForm({ mode: "onBlur" });
 
   const onSubmit = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 800));
-    console.log("Message submitted:", data);
-    reset();
+    try {
+      // Form values are mapped with the Template Variables we made earlier
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        CONTACT_TEMPLATE_ID,
+        {
+          to_name: data.name,
+          to_email: data.email, // Customer ka dynamic email
+          company_name: data.company,
+          topic: data.topic,
+          message: data.message,
+        },
+        EMAILJS_PUBLIC_KEY,
+      );
+
+      console.log("Message submitted and Email sent successfully:", data);
+      reset();
+    } catch (error) {
+      console.error("Email sending failed:", error);
+      alert("Failed to send message. Please try again.");
+    }
   };
 
   return (

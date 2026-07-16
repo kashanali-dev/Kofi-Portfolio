@@ -1,16 +1,15 @@
 import React from "react";
 import { FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
-
 import { MdEmail } from "react-icons/md";
 
 /**
  * Site Footer — Kofi Ofori-Mensah
  * Color scheme (sampled from reference image — dark navy):
- *   --color-bg:        #1A1A2E   section background
- *   --color-heading:   #FFFFFF   name / logo text
- *   --color-muted:     #9CA1B8   tagline, copyright, nav links (default state)
- *   --color-nav-hover: #FFFFFF   nav link hover
- *   --color-border:    rgba(255,255,255,0.10)   divider line, icon circle border
+ * --color-bg:        #1A1A2E   section background
+ * --color-heading:   #FFFFFF   name / logo text
+ * --color-muted:     #9CA1B8   tagline, copyright, nav links (default state)
+ * --color-nav-hover: #FFFFFF   nav link hover
+ * --color-border:    rgba(255,255,255,0.10)   divider line, icon circle border
  *
  * Nav links + social profiles per the document's internal-linking / schema
  * recommendations (Home, About, Research, Projects, Books, Contact —
@@ -42,25 +41,22 @@ function OrcidIcon({ className = "h-4 w-4" }) {
 const SOCIALS = [
   {
     label: "LinkedIn",
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/in/kofioforimensah/",
     icon: FaLinkedinIn,
   },
-
   {
     label: "ORCID",
-    href: "https://orcid.org",
+    href: "https://orcid.org/0009-0009-6363-8267",
     icon: OrcidIcon,
   },
-
   {
     label: "X / Twitter",
-    href: "https://x.com",
+    href: "https://x.com/ofori_mensah",
     icon: FaXTwitter,
   },
-
   {
     label: "Email",
-    href: "mailto:hello@kofiofori-mensah.com",
+    href: "mailto:Kofi@neurodigitalsupport.com",
     icon: MdEmail,
   },
 ];
@@ -76,6 +72,21 @@ export default function Footer() {
             <p className="text-lg font-bold text-white">
               Kofi Ofori-Mensah<span className="text-[#9CA1B8]">.</span>
             </p>
+
+            {/* Modified: Contact Email with MdEmail Icon */}
+            <div className="mt-2 flex items-center gap-2 text-sm text-[#9CA1B8]">
+              <MdEmail className="h-4 w-4 shrink-0" aria-hidden="true" />
+              <span>
+                Contact email:{" "}
+                <a
+                  href="mailto:Kofi@neurodigitalsupport.com"
+                  className="underline hover:text-white transition-colors"
+                >
+                  Kofi@neurodigitalsupport.com
+                </a>
+              </span>
+            </div>
+
             <p className="mt-2 max-w-xs text-sm leading-relaxed text-[#9CA1B8]">
               Digital marketing researcher, neurodiversity advocate, and founder
               of NeuroDigital Support.
