@@ -6,6 +6,7 @@ import { FaBars } from "react-icons/fa";
 export default function Header() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   const navItems = [
     { name: "Home", id: "home" },
@@ -31,13 +32,41 @@ export default function Header() {
     },
   ];
 
+  // Prevent background scrolling when mobile menu is open
+  useEffect(() => {
+    if (mobileMenu) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    // Cleanup function
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenu]);
+
+  // Scroll event and active section detector
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
+
+      // Simple intersection observer behavior for active links
+      const scrollPosition = window.scrollY + 120;
+      for (const item of navItems) {
+        const el = document.getElementById(item.id);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(item.id);
+            break;
+          }
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -67,7 +96,14 @@ export default function Header() {
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  className="relative text-[15px] font-medium text-[#2E2E2E] transition-all duration-300 hover:text-black after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-[#2E2E2E] after:transition-all after:duration-300 hover:after:w-full"
+                  onClick={() => setActiveSection(item.id)}
+                  className={`relative text-[15px] font-medium text-[#2E2E2E] transition-all duration-300 hover:text-black 
+                    after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:bg-[#2E2E2E] after:transition-all after:duration-300
+                    ${
+                      activeSection === item.id
+                        ? "text-black after:w-full"
+                        : "after:w-0 hover:after:w-full"
+                    }`}
                 >
                   {item.name}
                 </a>
@@ -76,9 +112,9 @@ export default function Header() {
           </div>
 
           {/* Right Side Items */}
-          <div className="flex items-center gap-8">
-            {/* Social Icons - Desktop Only */}
-            <div className="hidden lg:flex items-center gap-5">
+          <div className="flex items-center gap-5 md:gap-8">
+            {/* Social Icons */}
+            <div className="flex items-center gap-4 md:gap-5">
               {socials.map((item, index) => (
                 <a
                   key={index}
@@ -101,111 +137,121 @@ export default function Header() {
               <span>→</span>
             </a>
 
-            {/* Hamburger Menu Button - Mobile Only */}
+            {/* Hamburger Menu Button */}
             <button
               onClick={() => setMobileMenu(!mobileMenu)}
               className="lg:hidden p-2 text-[#2E2E2E] hover:text-black transition-all duration-300 text-2xl transform hover:scale-110"
             >
-              <FaBars
-                className={`transition-transform duration-300 ${mobileMenu ? "rotate-90" : "rotate-0"}`}
-              />
+              <FaBars className="rotate-0 transition-transform duration-300" />
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu - Slides from Left with Smooth Animation */}
-      {mobileMenu && (
-        <div className="fixed inset-0 z-40 lg:hidden">
-          {/* Backdrop with smooth fade */}
-          <div
-            className="absolute inset-0 bg-black/20 opacity-100 transition-opacity duration-300"
-            onClick={() => setMobileMenu(false)}
-          />
+      {/* Mobile Drawer Overlay Container */}
+      <div
+        className={`fixed inset-0 z-100 lg:hidden transition-all duration-300 ${
+          mobileMenu ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+      >
+        {/* Backdrop Fade Effect */}
+        <div
+          className={`absolute inset-0 bg-black/20 transition-opacity duration-300 ${
+            mobileMenu ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={() => setMobileMenu(false)}
+        />
 
-          {/* Slide Menu with smooth transform animation */}
-          <div
-            className={`absolute top-20 right-4 h-[70vh] w-72 rounded-2xl bg-[#F8F6F1] shadow-2xl overflow-y-auto transition-transform duration-300 ease-in-out ${
-              mobileMenu ? "translate-x-0" : "translate-x-full"
-            }`}
-          >
+        {/* Full Viewport Height Drawer */}
+        <div
+          className={`fixed top-0 right-0 h-screen w-80 bg-[#F8F6F1] shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${
+            mobileMenu ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          {/* Header Section of Drawer */}
+          <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-[#E8E4DA]/50">
+            <a
+              href="/"
+              onClick={() => setMobileMenu(false)}
+              className="text-[28px] font-bold tracking-[-0.03em] text-[#232323]"
+            >
+              Kofi
+              <span className="text-[#C68A2B]">•</span>
+            </a>
             {/* Close Button */}
             <button
               onClick={() => setMobileMenu(false)}
-              className="absolute right-4 top-4 text-2xl text-[#2E2E2E] hover:text-black transition-colors duration-200"
+              className="text-2xl text-[#2E2E2E] hover:text-black transition-colors duration-200"
             >
               ✕
             </button>
+          </div>
 
-            <div className="flex flex-col pt-16 pb-6">
-              {/* Social Icons */}
-              <div className="flex items-center gap-4 px-6 py-6 border-b border-[#E8E4DA] transition-all duration-300">
-                <span className="text-[13px] font-medium text-[#2E2E2E]">
-                  Follow:
-                </span>
-                <div className="flex items-center gap-3 ml-auto">
-                  {socials.map((item, index) => (
-                    <a
-                      key={index}
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[18px] text-[#2E2E2E] transition-all duration-300 hover:text-[#C68A2B] hover:scale-110"
-                    >
-                      {item.icon}
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              {/* Navigation Links */}
+          {/* Scrollable Nav Area */}
+          <div className="flex-1 overflow-y-auto py-4 flex flex-col">
+            {/* Navigation Links */}
+            <div>
               {navItems.map((item, index) => (
-                <a
+                <div
                   key={item.id}
-                  href={`#${item.id}`}
-                  onClick={() => setMobileMenu(false)}
-                  className="relative px-6 py-4 text-[15px] font-medium text-[#232323] transition-all border-b border-[#E8E4DA]/50 group after:absolute after:left-6 after:bottom-3 after:h-[1.5px] after:w-0 after:bg-[#2E2E2E] after:transition-all after:duration-300 hover:after:w-[calc(100%-48px)] transform duration-300 hover:translate-x-2"
-                  style={{
-                    animation: `slideIn 0.3s ease-out ${index * 50}ms forwards`,
-                    opacity: 0,
-                  }}
+                  className="px-6 py-5 border-b border-[#E8E4DA]/50"
                 >
-                  {item.name}
-                </a>
+                  <a
+                    href={`#${item.id}`}
+                    onClick={() => {
+                      setActiveSection(item.id);
+                      setMobileMenu(false);
+                    }}
+                    className={`relative inline-block text-[15px] font-semibold transition-all duration-300 group
+                      after:absolute after:left-0 after:bottom-1.5 after:h-0.5 after:bg-[#C68A2B] after:transition-all after:duration-300
+                      ${
+                        activeSection === item.id
+                          ? "text-[#C68A2B] after:w-3/4"
+                          : "text-[#232323] hover:text-[#C68A2B] after:w-0 hover:after:w-3/4"
+                      }`}
+                    style={{
+                      animation: mobileMenu
+                        ? `slideIn 0.3s ease-out ${index * 50}ms forwards`
+                        : "none",
+                      opacity: 0,
+                    }}
+                  >
+                    {item.name}
+                  </a>
+                </div>
               ))}
-
-              {/* Mobile CTA Button */}
-              <div className="px-6 pt-6 transform transition-all duration-300">
-                <a
-                  href="#contact"
-                  onClick={() => setMobileMenu(false)}
-                  className="group flex w-full items-center justify-center gap-2 rounded-lg bg-[#C68A2B] px-6 py-3 text-[14px] font-semibold uppercase tracking-[0.08em] text-[#F8F6F1] transition-all duration-300 hover:bg-[#B8771F] hover:-translate-y-1 hover:shadow-sm"
-                >
-                  Get In Touch
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
-                </a>
-              </div>
             </div>
 
-            {/* Smooth Animation Keyframes */}
-            <style>{`
+            {/* CTA Button placed immediately under the links list */}
+            <div className="px-6 py-6 mt-2">
+              <a
+                href="#contact"
+                onClick={() => setMobileMenu(false)}
+                className="group flex w-full items-center justify-center gap-2 rounded-lg bg-[#C68A2B] px-6 py-3.5 text-[14px] font-semibold uppercase tracking-[0.08em] text-[#F8F6F1] transition-all duration-300 hover:bg-[#B8771F] hover:-translate-y-1"
+              >
+                Get In Touch
+                <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </a>
+            </div>
+          </div>
+
+          {/* Slide-in Animation Keyframes */}
+          <style>{`
             @keyframes slideIn {
               from {
                 opacity: 0;
                 transform: translateX(20px);
               }
-
               to {
                 opacity: 1;
                 transform: translateX(0);
               }
             }
-            `}</style>
-          </div>
+          `}</style>
         </div>
-      )}
+      </div>
     </header>
   );
 }

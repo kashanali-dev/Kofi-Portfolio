@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
@@ -19,7 +19,7 @@ import "swiper/css/navigation";
 
 const ACCENT = "#C68A2B";
 
-// Updated project data aligned with actual documents and book cover assets
+// Project Data
 const projects = [
   {
     id: 1,
@@ -53,46 +53,80 @@ const projects = [
   },
   {
     id: 3,
-    icon: BookOpen,
+    icon: Building2,
     image: "/Images/asten.png",
-    badge: "PUBLICATION",
-    title: "The Invisible Users",
+    badge: "FLAGSHIP DEVELOPMENT",
+    title: "Asitina Pa",
+    location: "Ghana",
     description:
-      "A research-backed book exploring how digital platforms and modern social algorithms shape belonging, mental health, and exclusion for neurodivergent minds.",
+      "Building sustainable agricultural communities that combine modern infrastructure, environmental responsibility, and economic opportunity to improve rural life across Ghana.",
     highlights: [
-      "Focuses on platform ethics",
-      "Centered on UK adult experiences",
-      "Translates research to practice",
+      "Sustainable agricultural communities",
+      "Green infrastructure & smart planning",
+      "Investment-driven rural development",
     ],
-    button: "Read Publication",
+    button: "Explore Project",
   },
   {
     id: 4,
-    icon: BookOpen,
-    image: "/Images/shatterd.png",
-    badge: "PUBLICATION",
-    title: "Shattered Bonds",
+    icon: Building2,
+    image: "/Images/park.png",
+    badge: "MASTERPLAN",
+    title: "Sustainable Community Masterplan",
+    location: "Ghana",
     description:
-      "An in-depth analysis looking closely at family dynamics, diaspora parenting, and social development outcomes within the UK's Ghanaian community.",
+      "A visionary masterplan integrating residential living, urban agriculture, recreational spaces, and essential infrastructure to create resilient, self-sustaining communities for future generations.",
     highlights: [
-      "Diaspora youth outcome focus",
-      "Sociological & cultural insights",
-      "Practical communal recommendations",
+      "Eco-friendly urban planning",
+      "Community parks & public facilities",
+      "Long-term environmental resilience",
     ],
-    button: "Explore Book",
+    button: "View Masterplan",
   },
   {
     id: 5,
     icon: BookOpen,
-    image: "/Images/neurodigital.png",
+    image: "/Images/image.png",
     badge: "RESEARCH WORK",
-    title: "Neurodiversity Beyond the West",
+    title: "Asitina Pa Sustainable Communities",
     description:
-      "A study expanding the discourse around neurodivergent experiences, challenging westernized frameworks with global perspectives and research.",
+      "An impact-driven research and development initiative designing sustainable agricultural communities in Ghana, integrating modern housing, farming, education, healthcare, and green infrastructure.",
     highlights: [
-      "Global neurodiversity frameworks",
-      "Intersectional social research",
-      "Challenging traditional UX norms",
+      "Sustainable agricultural town planning",
+      "Green infrastructure & community development",
+      "Food security and rural economic growth",
+    ],
+    button: "View Project",
+  },
+  {
+    id: 6,
+    icon: BookOpen,
+    image: "/Images/dig.png",
+    badge: "RESEARCH WORK",
+    title: "Asitina Pa Housing Concept",
+    location: "Ghana / UK",
+    description:
+      "An innovative housing concept supporting the Asitina Pa vision, focused on sustainable architecture, resilient communities, and environmentally conscious residential development.",
+    highlights: [
+      "Sustainable housing research",
+      "Modern community architecture",
+      "Climate-resilient residential design",
+    ],
+    button: "View Research",
+  },
+  {
+    id: 7,
+    icon: BookOpen,
+    image: "/Images/gene.png",
+    badge: "RESEARCH WORK",
+    title: "Asitina Pa Residential Living",
+    location: "Ghana / UK",
+    description:
+      "A sustainable residential housing initiative within the Asitina Pa vision, designed to deliver modern, resilient, and environmentally responsible living spaces for growing communities.",
+    highlights: [
+      "Contemporary housing solutions",
+      "Community-centred neighbourhoods",
+      "Climate-smart residential planning",
     ],
     button: "View Research",
   },
@@ -101,7 +135,6 @@ const projects = [
 // ===================================
 // REUSABLE PROJECT CARD
 // ===================================
-
 function ProjectCard({ project }) {
   const Icon = project.icon;
 
@@ -126,7 +159,7 @@ function ProjectCard({ project }) {
         />
 
         {/* BADGE */}
-        <div className="absolute left-5 top-5 rounded-full bg-[#C68A2B] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-white shadow-lg">
+        <div className="absolute left-5 top-5 rounded-full bg-[#e4a136] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-white shadow-lg">
           {project.badge}
         </div>
       </div>
@@ -174,7 +207,7 @@ function ProjectCard({ project }) {
         </div>
 
         {/* BUTTON */}
-        <button className="mt-auto inline-flex w-fit cursor-pointer items-center gap-2.5 rounded-xl bg-[#C68A2B] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-[#B8771F]">
+        <button className="mt-auto bg-[#e4a136] inline-flex w-fit cursor-pointer items-center gap-2.5 rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-[#dd9725]">
           {project.button}
           <ArrowUpRight size={16} />
         </button>
@@ -186,11 +219,21 @@ function ProjectCard({ project }) {
 // ===================================
 // MAIN COMPONENT EXPORT
 // ===================================
-
 export default function GhanaProjects() {
-  const [swiperLoaded, setSwiperLoaded] = useState(false);
+  const [swiperInstance, setSwiperInstance] = useState(null);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+
+  // Sync Swiper parameters with custom navigation DOM elements
+  useEffect(() => {
+    if (swiperInstance && prevRef.current && nextRef.current) {
+      swiperInstance.params.navigation.prevEl = prevRef.current;
+      swiperInstance.params.navigation.nextEl = nextRef.current;
+      swiperInstance.navigation.destroy();
+      swiperInstance.navigation.init();
+      swiperInstance.navigation.update();
+    }
+  }, [swiperInstance]);
 
   return (
     <section
@@ -226,41 +269,33 @@ export default function GhanaProjects() {
 
         {/* SLIDER WRAPPER WITH ONLY ARROW BUTTONS */}
         <div className="relative px-2 md:px-12">
-          {/* Custom Prev Button (Visible on all screen sizes) */}
+          {/* Custom Prev Button */}
           <button
             ref={prevRef}
-            className="prev-btn absolute -left-2 md:left-0 top-1/2 -translate-y-1/2 z-10 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[#EFE7D8] bg-white text-[#1E1E1E] shadow-md transition-all duration-300 hover:bg-[#FFF6E7] hover:text-[#C68A2B] active:scale-95"
+            className="prev-btn absolute -left-2 md:left-0 top-1/2 -translate-y-1/2 z-10 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[#EFE7D8] bg-white text-[#1E1E1E] shadow-md transition-all duration-300 hover:bg-[#FFF6E7] hover:text-[#C68A2B] active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:pointer-events-none"
           >
             <ChevronLeft size={20} />
           </button>
 
-          {/* Custom Next Button (Visible on all screen sizes) */}
+          {/* Custom Next Button */}
           <button
             ref={nextRef}
-            className="next-btn absolute -right-2 md:right-0 top-1/2 -translate-y-1/2 z-10 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[#EFE7D8] bg-white text-[#1E1E1E] shadow-md transition-all duration-300 hover:bg-[#FFF6E7] hover:text-[#C68A2B] active:scale-95"
+            className="next-btn absolute -right-2 md:right-0 top-1/2 -translate-y-1/2 z-10 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[#EFE7D8] bg-white text-[#1E1E1E] shadow-md transition-all duration-300 hover:bg-[#FFF6E7] hover:text-[#C68A2B] active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:pointer-events-none"
           >
             <ChevronRight size={20} />
           </button>
 
-          {/* Swiper Slider (Without Pagination Module) */}
+          {/* Swiper Slider */}
           <Swiper
             modules={[Navigation, Autoplay]}
-            loop={true}
+            loop={false} // Dubarah start nahi hoga
             speed={900}
             spaceBetween={24}
-            navigation={{
-              prevEl: prevRef.current,
-              nextEl: nextRef.current,
-            }}
-            onBeforeInit={(swiper) => {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-            }}
-            onInit={() => setSwiperLoaded(true)}
+            onSwiper={setSwiperInstance}
             autoplay={{
-              delay: 3500,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
+              delay: 3000, // 3 seconds tak har slide ruke gi
+              disableOnInteraction: true, // Manual touch/click se autoplay stop ho jaye
+              stopOnLastSlide: true, // Sabse important: 7th slide par aakar automatic slide hona band ho jaye
             }}
             breakpoints={{
               0: { slidesPerView: 1 },

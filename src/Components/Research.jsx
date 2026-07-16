@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { FileText, Brain, Globe, BookOpen, ScrollText } from "lucide-react";
 
-const ACCENT = "#C68A2B";
+const ACCENT = "#e4a136";
 
 const researches = [
   {

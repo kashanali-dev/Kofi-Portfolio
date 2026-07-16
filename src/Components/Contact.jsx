@@ -110,7 +110,7 @@ function NewsletterForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="whitespace-nowrap transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#A06D1E] active:translate-y-0 cursor-pointer rounded-lg bg-[#C68A2B] px-6 py-2.5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60 shadow-sm"
+          className="whitespace-nowrap transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#dd9725] active:translate-y-0 cursor-pointer rounded-lg bg-[#e4a136] px-6 py-2.5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60 shadow-sm"
         >
           {isSubmitting ? "Subscribing…" : "Subscribe"}
         </button>
@@ -118,7 +118,7 @@ function NewsletterForm() {
 
       {isSubmitSuccessful && (
         <p className="mt-3 flex items-center gap-1.5 text-sm font-medium text-[#C68A2B]">
-          <CheckCircle2 className="h-4 w-4 text-[#C68A2B]" /> You're subscribed
+          <CheckCircle2 className="h-4 w-4 text-[#e4a136]" /> You're subscribed
           — thank you.
         </p>
       )}
@@ -236,14 +236,14 @@ function SendMessageForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full cursor-pointer rounded-lg bg-[#C68A2B] py-3 text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#A06D1E] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 shadow-sm"
+            className="w-full cursor-pointer rounded-lg bg-[#e4a136] py-3 text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#dd9725] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 shadow-sm"
           >
             {isSubmitting ? "Sending…" : "Send Message"}
           </button>
         </div>
 
         {isSubmitSuccessful && (
-          <p className="flex items-center gap-1.5 text-sm font-medium text-[#C68A2B] justify-center">
+          <p className="flex items-center gap-1.5 text-sm font-medium text-[#e4a136] justify-center">
             <CheckCircle2 className="h-4 w-4" /> Message sent — thank you, I'll
             get back to you soon.
           </p>

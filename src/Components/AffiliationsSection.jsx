@@ -5,7 +5,7 @@ const affiliations = [
   {
     name: "University of Roehampton London",
     logoUrl: "/Images/unique.jpeg", // Roehampton Logo
-    link: "https://www.roehampton.ac.uk",
+    link: "https://blog.roehampton.ac.uk/2026/07/13/from-support-worker-to-digital-inclusion-advocate-how-my-extended-masters-at-roehampton-helped-me-find-my-purpose/",
     tag: "Academic Partner",
     description:
       "Project Coordinator, Research Assistant & MSc Digital Marketing Researcher",
@@ -13,7 +13,7 @@ const affiliations = [
   {
     name: "Business Insider Africa",
     logoUrl: "/Images/community.jpeg", // Business Insider Africa Logo
-    link: "https://africa.businessinsider.com",
+    link: "https://africa.businessinsider.com/local/careers/exclusive-interview-with-kofi-ofori-mensah-head-of-sales-and-marketing-at-prabon/qp58m6n",
     tag: "Media Feature",
     description:
       "Featured Expert Commentary on Digital Marketing, Inclusion & Ethics",
@@ -78,7 +78,7 @@ export default function AffiliationsSection() {
                 </p>
 
                 {/* View Profile Action Link */}
-                <div className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-[#B4812E] group-hover:text-[#2D2A26] transition-colors duration-300">
+                <div className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-[#e4a136] group-hover:text-[#dd9725] transition-colors duration-300">
                   <span>View Profile</span>
                   <svg
                     className="w-4 h-4 ml-1.5 transform group-hover:translate-x-1.5 transition-transform duration-300"

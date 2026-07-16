@@ -39,17 +39,8 @@ export default function HeroSection() {
             >
               Kofi Ofori-Mensah
               <span className="block mt-2 text-xl font-normal text-neutral-700 sm:text-2xl lg:text-[1.45rem]">
-                Business Researcher, Marketing &amp; Founder — building{" "}
-                <span
-                  className="bg-clip-text font-semibold text-transparent"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(90deg,#9A5B1E,#C9852F,#E7B95C)",
-                  }}
-                >
-                  a more inclusive internet
-                </span>{" "}
-                for neurodivergent adults
+                Business Researcher, Marketing &amp; Founder — building a more
+                inclusive internet for neurodivergent adults
               </span>
             </h1>
 
