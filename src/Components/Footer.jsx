@@ -77,7 +77,7 @@ export default function Footer() {
             <div className="mt-2 flex items-center gap-2 text-sm text-[#9CA1B8]">
               <MdEmail className="h-4 w-4 shrink-0" aria-hidden="true" />
               <span>
-                Contact email:{" "}
+                {" "}
                 <a
                   href="mailto:Kofi@neurodigitalsupport.com"
                   className="underline hover:text-white transition-colors"
