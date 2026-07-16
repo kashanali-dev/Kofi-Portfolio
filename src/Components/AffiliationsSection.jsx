@@ -1,65 +1,87 @@
 import React from "react";
 
-// Client ke logos aur links ka data array
+// Document content se aligned exact data
 const affiliations = [
   {
     name: "University of Roehampton London",
-    logoUrl: "/Images/unique.jpeg", // Image 1 (Roehampton Logo)
-    link: "https://www.roehampton.ac.uk", // Relevant Link
-    description: "MSc Digital Marketing Research & Project Coordination",
+    logoUrl: "/Images/unique.jpeg", // Roehampton Logo
+    link: "https://www.roehampton.ac.uk",
+    tag: "Academic Partner",
+    description:
+      "Project Coordinator, Research Assistant & MSc Digital Marketing Researcher",
   },
   {
     name: "Business Insider Africa",
-    logoUrl: "/Images/community.jpeg", // Image 2 (Business Insider Africa Logo)
-    link: "https://africa.businessinsider.com", // Relevant Link
-    description: "Featured Commentary & Media Coverage",
+    logoUrl: "/Images/community.jpeg", // Business Insider Africa Logo
+    link: "https://africa.businessinsider.com",
+    tag: "Media Feature",
+    description:
+      "Featured Expert Commentary on Digital Marketing, Inclusion & Ethics",
   },
 ];
 
 export default function AffiliationsSection() {
   return (
-    <section className="bg-slate-50 py-16 px-8 md:px-10 border-t border-b border-slate-100">
+    <section className="bg-[#FAF8F5] py-12 px-6 md:px-10 border-t border-b border-[#EFECE6] overflow-hidden">
       <div className="max-w-6xl mx-auto text-center">
-        {/* Section Header */}
-        <p className="text-xs font-semibold text-emerald-600 tracking-widest uppercase mb-2">
-          Academic Affiliations & Media
-        </p>
-        <h2 className="text-2xl md:text-3xl font-bold text-slate-800 mb-4">
+        {/* Academic Affiliations Premium Badge */}
+        <div className="inline-block mb-4">
+          <span className="text-[11px] font-bold tracking-[0.15em] uppercase border border-[#C2903C]/40 text-[#B4812E] bg-[#FDFBF9] px-4 py-1.5 rounded-full shadow-sm">
+            Academic Affiliations & Media
+          </span>
+        </div>
+
+        {/* Section Heading */}
+        <h2 className="text-3xl md:text-4xl font-extrabold text-[#2D2A26] tracking-tight mb-4">
           Trusted By & Featured In
         </h2>
-        <p className="text-sm md:text-base text-slate-500 max-w-xl mx-auto mb-12">
-          Bridging academic research with industry-leading digital marketing and
-          ethics discussion.
+
+        {/* Sub-description */}
+        <p className="text-sm md:text-base text-slate-500 max-w-xl mx-auto mb-8 leading-relaxed">
+          Bridging academic research with industry-leading digital marketing,
+          ethics, and neurodiversity discussions.
         </p>
 
-        {/* Logos Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center justify-center max-w-4xl mx-auto">
+        {/* Logos & Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-stretch justify-center max-w-4xl mx-auto">
           {affiliations.map((item, index) => (
             <a
               key={index}
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center justify-between p-8 bg-white rounded-2xl shadow-sm border border-slate-100 hover:border-emerald-500/30 hover:shadow-md transition-all duration-300 ease-in-out h-full min-h-[220px]"
+              className="group relative flex flex-col justify-between p-8 bg-white rounded-2xl border border-[#EFECE6] hover:border-[#C2903C]/40 shadow-[0_4px_20px_-4px_rgba(235,230,220,0.4)] hover:shadow-[0_12px_30px_-6px_rgba(194,144,60,0.12)] transition-all duration-300 ease-in-out h-full min-h-75"
             >
+              {/* Category Tag Badge */}
+              <div className="absolute top-4 left-4">
+                <span className="text-[9px] font-bold tracking-wider uppercase bg-[#F5EFE4] text-[#B4812E] px-2.5 py-1 rounded">
+                  {item.tag}
+                </span>
+              </div>
+
               {/* Logo Container */}
-              <div className="w-full flex items-center justify-center h-24 mb-6">
+              <div className="w-full flex items-center justify-center h-28 mt-4 mb-6">
                 <img
                   src={item.logoUrl}
                   alt={`${item.name} logo`}
-                  className="max-h-full max-w-[80%] object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out"
+                  className="max-h-full max-w-[80%] object-contain filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 ease-in-out transform group-hover:scale-[1.02]"
                 />
               </div>
 
-              {/* Description & Link Text */}
-              <div className="text-center">
-                <p className="text-xs text-slate-400 font-medium mb-1 uppercase tracking-wider">
+              {/* Title & Description Box */}
+              <div className="text-center pt-4 border-t border-[#F7F5F0]">
+                <p className="text-[11px] text-slate-400 font-bold mb-1.5 uppercase tracking-wider">
                   {item.name}
                 </p>
-                <span className="inline-flex items-center text-sm font-semibold text-slate-700 group-hover:text-emerald-600 transition-colors duration-200">
-                  View Profile
+                <p className="text-sm text-slate-600 mb-5 font-medium leading-relaxed">
+                  {item.description}
+                </p>
+
+                {/* View Profile Action Link */}
+                <div className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-[#B4812E] group-hover:text-[#2D2A26] transition-colors duration-300">
+                  <span>View Profile</span>
                   <svg
-                    className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform"
+                    className="w-4 h-4 ml-1.5 transform group-hover:translate-x-1.5 transition-transform duration-300"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -67,11 +89,11 @@ export default function AffiliationsSection() {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth={2}
+                      strokeWidth={2.5}
                       d="M14 5l7 7m0 0l-7 7m7-7H3"
                     />
                   </svg>
-                </span>
+                </div>
               </div>
             </a>
           ))}
